@@ -1,42 +1,41 @@
-# Nuxt 3 Minimal Starter
+# Nuxt 3 Minimal Starter with Vuetify3
 
-Look at the [nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
-
-## Setup
-
-Make sure to install the dependencies:
+## How to setup this repository
 
 ```bash
-# yarn
+# create nuxt3 project
+npx nuxi init <your-app-name>
+
+cd <your-app-name>
+
 yarn install
 
-# npm
-npm install
+# install Vuetify3
+yarn add vuetify@next mdi
 
-# pnpm
-pnpm install --shamefully-hoist
+yarn add -D sass
 ```
 
-## Development Server
+## Modify nuxt.config.ts
 
-Start the development server on http://localhost:3000
+```typescript
+// https://v3.nuxtjs.org/api/configuration/nuxt.config
+export default defineNuxtConfig({
+  rootDir: './src',
+  css: ["vuetify/lib/styles/main.sass", "mdi/css/materialdesignicons.min.css"],
+  build: {
+    transpile: ["vuetify"],
+  },
+  vite: {
+    define: {
+      "process.env.DEBUG": false,
+    },
+  },
+});
+```
+
+## Start Development Server
 
 ```bash
-npm run dev
+yarn dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-npm run build
-```
-
-Locally preview production build:
-
-```bash
-npm run preview
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
